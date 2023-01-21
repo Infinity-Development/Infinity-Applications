@@ -10,7 +10,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.limits = new Map();
 
-client.on("ready", async (_) => {
+client.on('ready', async (_) => {
   console.log(`${client.user.tag} is online.`);
   client.user.setActivity(`InfinityApplications`, { type: 'WATCHING' });
 });
