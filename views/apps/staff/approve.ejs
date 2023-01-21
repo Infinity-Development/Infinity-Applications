@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- INLUCDE THE HEADER IN THE PAGE.-->
+    <head>
+      <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+    <%- include(headerPath, {
+      bot, user, path,
+      description: 'Approve a Application | Managers Only',
+      description2: 'Approve a Application | Managers Only',
+      title: `Infinity Apps | Approve App`,
+      main_title: `Infinity Apps | Approve App`,
+      image: 'none',
+      }) 
+    %>
+
+    <% if(alert) { %>
+        <%- include(notifyPath, {alert}) %>
+      <% }else if(error){ %>
+          <%- include(notifyPath, {error}) %>
+      <% } %>
+
+    <body>
+     <%- include(navbarPath, { bot, user, path }) %>
+  
+     <br><br><br><br><br><br><br><br><br><br>
+
+<div class="container">
+  <div class="container contact-form bg-ibl">
+    <form method="post">
+     <br />
+       <div class="contact-image">
+        <h3><i class="fa fa-file-text"></i>Approval for App: <%= app.appID %></h3>
+        <hr style="color: white; background-color: white;" />
+       </div>
+       <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label><i class="fa fa-fingerprint"></i> User ID</label>
+              <input type="text" name="userID" id="userID" class="form-control" placeholder="<%= app.userID %>" value="<%= app.userID %>" disabled />
+            </div>
+            <div class="form-group">
+                <label><i class="fa fa-user"></i> Username</label>
+                <input type="text" name="userName" id="userName" class="form-control" placeholder="app.userName" value="<%= app.userName %>" disabled/>
+            </div>
+            <div class="form-group">
+                <label><i class="fa fa-exclamation-circle"></i> Experience</label>
+                <p class="text-muted">Tell us any experience you have working for other servers or bot lists.</p>
+                <textarea type="text" class="form-control" placeholder="<%= app.experience %>" value="<%= app.experience %>" disabled></textarea>
+            </div>
+            <div class="form-group">
+              <label><i class="fa fa-user-cog"></i> Strengths</label>
+              <p class="text-muted">Tell us a little bit about yourself.</p>
+              <textarea type="text" class="form-control" placeholder="<%= app.strength %>" value="<%= app.strength %>" disabled></textarea>
+            </div>
+            <div class="form-group">
+              <label><i class="fa fa-gavel"></i> Examples: <span style="color: rgb(175, 22, 22)">*</span></label>
+              <p class="text-muted">- How would you handle, Mass Pings, Nukes and Raids</p>
+              <textarea type="text" class="form-control" placeholder="<%= app.handle %>" value="<%= app.handle %>" disabled></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label><i class="fa fa-crown"></i> Position: <span style="color: green">*</span></label>
+            <p class="form-control"><%= app.position %></p>
+          </div>
+          <div class="form-group">
+            <label><i class="fa fa-comment-o"></i> Reason for applying!: <span style="color: rgb(175, 22, 22)">*</span></label>
+            <textarea type="text" class="form-control" placeholder="<%= app.reason %>" value="<%= app.reason %>" disabled></textarea>
+          </div>
+          <hr style="background-color: white;">
+          <h3><i class="fa fa-gavel"></i>Application Terms</h3>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked disabled>
+            <label class="form-check-label" for="flexCheckDefault" name="rules" id="rules" checked disabled>
+              I have read and agree to be bound to the Rules listed in the Infinity Bot List Discord Server.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked disabled>
+            <label class="form-check-label" for="flexCheckDefault" name="terms" id="terms" checked disabled>
+              I have read and agree to be bound to the <a href="https://infinitybotlist.com/terms">Terms of Service</a> and <a href="https://infinitybotlist.com/privacy">Privacy Policy</a>.
+            </label>
+          </div>
+          <hr style="color: white; background-color: white;" />
+          <div class="form-group">
+            <label><i class="fa fa-user-cog"></i> Reason for Approval: <span style="color: rgb(175, 22, 22)">*</span></label>
+            <textarea class="form-control" name="staff_reason" id="staff_reason" placeholder="Ex: Not enough info provided" required></textarea>
+          </div>
+      </div>
+    </div>
+        <hr style="color: white; background-color: white;" />
+        <center>
+          <button name="submit" class="btn btn-success"><i class="fas fa-plus"></i> Approve Application!</button>
+        </center>
+    </form>
+    <br/>
+  </div>
+  </div>
+
+  <br><br><br><br><br><br>
+
+</body>
+
+<!-- INCLUDE THE WEBSITE FOOTER -->
+<%- include(footerPath) %>
+
+</html>

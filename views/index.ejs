@@ -1,0 +1,176 @@
+<!-- 
+    COPYRIGHT (c) 2021 Infinity Bot List (infinitybotlist.com)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+
+    <%- include(headerPath, {
+        bot, user, path,
+        description: 'Interested in joining the Infinity Bot List team? Feel free to fill out an application here!',
+        description2: 'Interested in joining the Infinity Bot List team? Feel free to fill out an application here!',
+        title: 'Infinity Apps | Home',
+        main_title: 'Infinity Apps | Home',
+        image: '/static/images/Apps.png',
+    }) %>
+
+    <body>
+        <%- include(navbarPath, { bot, user, config, staff, path }) %>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <% if(alert) { %>
+          <%- include(notifyPath, {alert}) %>
+        <% }else if(error){ %>
+            <%- include(notifyPath, {error}) %>
+        <% } %>
+
+        <br />
+
+            <div class="container">
+                <br /><br />
+                <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+
+                    <!-- STAFF TEAM APPLICATIONS -->
+                    <div class="col-md-6 col-lg-4 pb-3">
+                        <div class="card ibl-card-custom bg-ibl border-white border-0">
+                          <div class="card-body">
+                            <h1 class="card-title">Staff Team</h1>
+                            <% if (config.staffAppsStatus === 'enabled') { %>
+                              <div class="is-pulled-right mt-ibl mt-1">
+                                <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-success"></i>&nbsp;Status: Open</span>
+                              </div>
+                              <% } else { %>
+                                <div class="is-pulled-right mt-ibl mt-1">
+                                  <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-danger"></i>&nbsp;Status: Closed</span>
+                                </div>
+                              <% } %>
+                            <br />
+                            <p class="card-text toxbotDesc">
+                                Join the Infinity Staff Team and help us Approve, Deny and Certify Discord Bots.
+                                We are a Welcoming layed back team always willing to give new people an opportunity!
+                            </p>
+                          </div>
+                          <div class="card-footer" style="background-color: #2C2F33;;">
+                              <% if (config.staffAppsStatus === 'enabled') { %>
+                                <center>
+                                  <a class="btn btn-primary" href="/apps/staff/new">Apply Now</a>
+                                </center>
+                            <% } else { %>
+                                <center>
+                                  <button class="btn btn-danger" disabled>Closed</button>
+                                </center>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- DEV TEAM APPLICATIONS -->
+                      <div class="col-md-6 col-lg-4 pb-3">
+                        <div class="card ibl-card-custom bg-ibl border-white border-0">
+                          <div class="card-body">
+                            <h1 translate="no" class="card-title">Dev Team</h1>
+                            <% if (config.devAppsStatus === 'enabled') { %>
+                            <div class="is-pulled-right mt-ibl mt-1">
+                              <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-success"></i>&nbsp;Status: Open</span>
+                            </div>
+                            <% } else { %>
+                              <div class="is-pulled-right mt-ibl mt-1">
+                                <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-danger"></i>&nbsp;Status: Closed</span>
+                              </div>
+                            <% } %>
+                            <br />
+                            <p translate="no" class="card-text toxbotDesc">Join our Dev Team and help us Update, Manage and Maintain all of the Infinity Services!</p>
+                          </div>
+                          <div class="card-footer" style="background-color: #2C2F33;;">
+                              <% if (config.devAppsStatus === 'enabled') { %>
+                                <center>
+                                  <a class="btn btn-primary" href="/apps/devs/new">Apply Now</a>
+                                </center>
+                            <% } else { %>
+                                <center>
+                                  <button class="btn btn-danger" disabled>Closed</button>
+                                </center>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- PARTNER APPLICATIONS -->
+                      <div class="col-md-6 col-lg-4 pb-3">
+                        <div class="card ibl-card-custom bg-ibl border-white border-0">
+                          <div class="card-body">
+                            <h1 translate="no" class="card-title">Partners</h1>
+                            <% if (config.partAppsStatus === 'enabled') { %>
+                              <div class="is-pulled-right mt-ibl mt-1">
+                                <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-success"></i>&nbsp;Status: Open</span>
+                              </div>
+                              <% } else { %>
+                                <div class="is-pulled-right mt-ibl mt-1">
+                                  <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-danger"></i>&nbsp;Status: Closed</span>
+                                </div>
+                              <% } %>
+                              <br />
+                            <p translate="no" class="card-text toxbotDesc">Partner your Discord Bot, Discord Server or Buiness Today!</p>
+                          </div>
+                          <div class="card-footer" style="background-color: #2C2F33;;">
+                              <% if (config.partAppsStatus === 'enabled') { %>
+                                <center>
+                                  <a class="btn btn-primary" href="/apps/partners/new">Apply Now</a>
+                                </center>
+                            <% } else { %>
+                                <center>
+                                  <button class="btn btn-danger" disabled>Closed</button>
+                                </center>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--- Ban Appeals This will be worked on.
+                      <div class="col-md-6 col-lg-4 pb-3">
+                        <div class="card ibl-card-custom bg-ibl border-white border-0">
+                          <div class="card-body">
+                            <h1 translate="no" class="card-title">Ban Appeals</h1>
+                            <% if (config.banAppStatus === 'enabled') { %>
+                              <div class="is-pulled-right mt-ibl mt-1">
+                                <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-success"></i>&nbsp;Status: Open</span>
+                              </div>
+                              <% } else { %>
+                                <div class="is-pulled-right mt-ibl mt-1">
+                                  <span data-tooltip="Application Status" data-tooltip-location="bottom" class="badge badge-stats mb-ibl mt-1 w-100"><i class="fas fa-exclamation-circle has-text-danger"></i>&nbsp;Status: Closed</span>
+                                </div>
+                              <% } %>
+                              <br />
+                            <p translate="no" class="card-text toxbotDesc">Been banned from the Discord Server or Website then create a ban appeal.</p>
+                          </div>
+                          <div class="card-footer" style="background-color: #2C2F33;;">
+                              <% if (config.banAppStatus === 'enabled') { %>
+                                <center>
+                                  <a class="btn btn-primary" href="/apps/appeal/new">Apply Now</a>
+                                </center>
+                            <% } else { %>
+                                <center>
+                                  <button class="btn btn-danger" disabled>Closed</button>
+                                </center>
+                            <% } %>
+                          </div>
+                        </div>
+                      </div> --->
+ 
+
+
+                </div>
+            </div>
+
+    </body>
+
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+
+    <%- include(footerPath) %>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- INLUCDE THE HEADER IN THE PAGE.-->
+    <head>
+      <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+    <%- include(headerPath, {
+      bot, user, path,
+      description: 'Submit a Ban Appeal | Login Required',
+      description2: 'Submit a Ban Appeal | Login Required',
+      title: `Infinity Apps | Ban Appeal`,
+      main_title: `Infinity Apps | Ban Appeal`,
+      image: 'none',
+      }) 
+    %>
+
+    <% if(alert) { %>
+        <%- include(notifyPath, {alert}) %>
+      <% }else if(error){ %>
+          <%- include(notifyPath, {error}) %>
+      <% } %>
+
+    <body>
+    <%- include(navbarPath, { bot, user, path }) %>
+     <br><br><br><br><br><br><br><br><br><br>
+
+     <div class="container">
+        <div class="container contact-form bg-ibl">
+          <form method="post">
+           <br />
+             <div class="contact-image">
+              <h3><i class="fa fa-file-text"></i>Submit a Ban Appeal</h3>
+              <hr style="color: white; background-color: white;" />
+             </div>
+             <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label><i class="fa fa-fingerprint"></i> Discord ID: <span style="color: green">*</span></label>
+                          <p class="text-muted">- Your Discord User ID </p>
+                          <input type="text" name="userID" id="userID" class="form-control" placeholder="<%= user.id %>" value="<%= user.id %>" disabled />
+                      </div>
+                      <div class="form-group">
+                          <label><i class="fa fa-user"></i> Discord Username: <span style="color: green">*</span></label>
+                          <p class="text-muted">- Your Discord Username</p>
+                          <input type="text" name="userName" id="userName" class="form-control" placeholder="<%= user.username %>" value="<%= user.username %>" disabled/>
+                      </div>
+                      <div class="form-group">
+                        <label><i class="fa fa-exclamation-circle"></i> Reason why you was banned: <span style="color: rgb(175, 22, 22)">*</span></label>
+                          <p class="text-muted">Please state on why you was banned from the Server or Website?</p>
+                          <textarea type="text" name="experience" id="experience" class="form-control" placeholder="Ex: I was banned for spamming text in channels... " required></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label><i class="fa fa-user-cog"></i> Why should we remove your ban: <span style="color: rgb(175, 22, 22)">*</span></label>
+                        <p class="text-muted">Please tell us why you want us to remove your ban and let you back.</p>
+                        <textarea class="form-control" name="strength" id="strength" placeholder="Ex: You should let me back into the server because..." required></textarea>
+                      </div>
+                     
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-crown"></i> Do you agree to everything you have said: <span style="color: green">*</span></label>
+                       <select name="position" id="position" class="form-control">
+                         <option value="default" disabled>Select One</option>
+                         <option value="Yes">Yes</option>
+                         <option value="No">No</option>
+                       </select>
+                    </div>
+                    <hr style="background-color: white;">
+                    <h3><i class="fa fa-exclamation-circle"></i> Useful Info:</h3>
+                    <p class="text-muted">- Fields with a <span style="color: rgb(175, 22, 22)">*</span> next to it are required.</p>
+                    <p class="text-muted">- Fields with a <span style="color: green">*</span> next to it are prefilled and can't be changed.</p>
+                    <hr style="background-color: white;">
+                    <h3><i class="fa fa-gavel"></i>Application Terms:</h3>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Agree_To_Follow" id="flexCheckDefault" required>
+                      <label class="form-check-label" for="flexCheckDefault" name="rules" id="rules" required>
+                        I have read and agree to be bound to the Rules listed in the Infinity Bot List Discord Server.
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Agree_To_Follow" id="flexCheckDefault" required>
+                      <label class="form-check-label" for="flexCheckDefault" name="terms" id="terms" required>
+                        I have read and agree to be bound to the <a href="https://infinitybotlist.com/terms">Terms of Service</a> and <a href="https://infinitybotlist.com/privacy">Privacy Policy</a>.
+                      </label>
+                    </div>
+                </div>
+              </div>
+              <br /><br />
+              <center>
+                <button name="submit" class="btn btn-primary"><i class="fas fa-save"></i> Submit</button>
+              </center>
+          </form>
+          <br/>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    </body>
+    
+    <!-- INCLUDE THE WEBSITE FOOTER -->
+    <%- include(footerPath) %>
+    
+    </html>

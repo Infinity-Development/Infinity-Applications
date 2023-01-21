@@ -1,0 +1,205 @@
+<!-- 
+    COPYRIGHT (c) 2021 Infinity Bot List (infinitybotlist.com)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+
+    <%- include(headerPath, {
+        bot, user, path,
+        description: 'View your Profile! | Login Required',
+        description2: 'View your Profile! | Login Required',
+        title: 'Infinity Apps | Profile',
+        main_title: 'Infinity Apps | Profile',
+        image: 'none',
+    }) %>
+
+    <body>
+        <%- include(navbarPath, { bot, user, path }) %>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <div class="container px-3 px-3 mt-5 pt-5">
+            <div class="columns container px-3 is-multiline">
+                <div class="column is-2">
+                    <img draggable="false" class="pulse-avatar"  onerror=" imgerror(this);"="" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>" style="border-radius: 50%;">
+                </div>
+                <div class="column is-6">
+                  <p translate="no" class="has-text-white is-size-3" style="margin-bottom: 10px;"><%= user.username %><span class="is-size-4" style="opacity: 0.7;">#<%= user.discriminator %></span>&nbsp;</p>         
+                    <% if(profile) { %>
+                    <% if(!profile.about) { %>
+                      <p class="mt-1 has-text-white">This user prefers to be Anonymous 🤔</p>
+                    <% } else if (profile.about) { %>
+                      <p class="mt-1 has-text-white"><%= profile.about %></p>
+                    <% } else { %>
+                      <p class="mt-1 has-text-white">This user prefers to be Anonymous 🤔</p>
+                    <% } %>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+              <br /><br />
+              <div class="container">
+                <br><br>
+              <div class="column">
+                <center>
+                  <p class="has-text-white title is-large"><i class="fa fa-gavel has-text-warning"></i>&nbsp;Staff Applications</p>
+                </center>
+                  <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+                    <% if(staff_apps.length === 0) { %> 
+                    <center>
+                      <p style="font-size: 20px; color: white; text-align:center;">You have no Staff Applications</p>
+                    </center>
+                      <% } else { %>
+                      <% staff_apps.filter(app => { %> 
+                    <div class="col-md-6 col-lg-4 pb-3">
+                      <div data-aos="fade-left">
+                      <div class="card tox-card-custom bg-tox border-white border-0">
+                        <div class="card-body">
+                          <div class="is-pulled-right mt-tox mt-1">
+                            <% if (app.status === 'approved') { %>
+                               <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-success"></i>&nbsp; Approved</span>
+                            <% } else if (app.status === 'denied') { %>
+                               <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Denied</span>
+                            <% } else if (app.status === 'pending') { %>
+                               <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-danger"></i>&nbsp; Pending</span>
+                            <% } %>
+                          </div>
+                          <p translate="no" class="card-text toxbotDesc">
+                            App ID: <%= app.appID %>
+                            <br /><br />
+                            App Type: <%= app.position %>
+                            <br /><br />
+                            Reason: <%= app.reason %>
+                            <br /><br />
+                            <% if (app.status === 'approved') { %>
+                            Approval Reason: <%= app.staff_reason %>
+                            <% } else if (app.status === 'denied') { %>
+                            Denial Reason: <%= app.staff_reason %>
+                            <% } %>
+                          </p>
+                        </div>
+                        <div class="card-footer" style="background-color: #2C2F33;;">
+                          <a href="/apps/staff/view/<%= app.appID%>" class="btn btn-secondary btn-bot">View Application</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <% }) %>
+                <% } %>
+              </div>
+          </div>
+        </div> 
+        <div class="container">
+          <br><br>
+        <div class="column">
+          <center><p class="has-text-white title is-large" style="text-align:center"><i class="fa fa-gavel has-text-success"></i>&nbsp;Dev Applications</p></center>
+            <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+              <% if(dev_apps.length === 0) { %>
+              <center>
+                <p style="font-size: 20px; color: white; text-align:center">You have no Dev Applications</p>
+              </center>
+                <% } else { %>
+                <% dev_apps.filter(app => { %> 
+              <div class="col-md-6 col-lg-4 pb-3">
+                <div data-aos="fade-left">
+                <div class="card tox-card-custom bg-tox border-white border-0">
+                  <div class="card-body">
+                    <div class="is-pulled-right mt-tox mt-1">
+                      <% if (app.status === 'approved') { %>
+                           <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-success"></i>&nbsp; Approved</span>
+                      <% } else if (app.status === 'denied') { %>
+                           <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Denied</span>
+                      <% } else if (app.status === 'pending') { %>
+                           <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-danger"></i>&nbsp; Pending</span>
+                      <% } %>
+                    </div>
+                  <h4 translate="no" class="card-title">ID: <strong><%= app.appID %></strong></h4>
+                    <p translate="no" class="card-text toxbotDesc">
+                        App ID: <%= app.appID %>
+                        <br /><br />
+                        App Type: <%= app.position %>
+                        <br /><br />
+                        Reason: <%= app.reason %>
+                        <br /><br />
+                        <% if (app.status === 'approved') { %>
+                        Approval Reason: <%= app.staff_reason %>
+                        <% } else if (app.status === 'denied') { %>
+                        Denial Reason: <%= app.staff_reason %>
+                        <% } %>
+                    </p>
+                  </div>
+                  <div class="card-footer" style="background-color: #2C2F33;;">
+                    <a href="/apps/devs/view/<%= app.appID%>" class="btn btn-secondary btn-bot">View Application</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <% }) %>
+          <% } %>
+        </div>
+    </div>
+  </div>
+  <div class="container">
+    <br><br>
+  <div class="column">
+    <center>
+      <p class="has-text-white title is-large" style="text-align:center"><i class="fa fa-gavel has-text-danger"></i>&nbsp;Partner Applications</p>
+    </center>
+      <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+        <% if(part_apps.length === 0) { %>
+        <center>
+          <p style="font-size: 20px; color: white; text-align:center">You have no Partner Applications</p>
+        </center>
+          <% } else { %>
+          <% part_apps.filter(app => { %> 
+        <div class="col-md-6 col-lg-4 pb-3">
+          <div data-aos="fade-left">
+          <div class="card tox-card-custom bg-tox border-white border-0">
+            <div class="card-body">
+              <div class="is-pulled-right mt-tox mt-1">
+                <% if (app.status === 'approved') { %>
+                     <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-success"></i>&nbsp; Approved</span>
+                <% } else if (app.status === 'denied') { %>
+                     <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Denied</span>
+                <% } else if (app.status === 'pending') { %>
+                     <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-danger"></i>&nbsp; Pending</span>
+                <% } %>
+              </div>
+            <h4 translate="no" class="card-title">ID: <strong><%= app.appID %></strong></h4>
+              <p translate="no" class="card-text toxbotDesc">
+                                      App ID: <%= app.appID %>
+                        <br /><br />
+                        App Type: <%= app.position %>
+                        <br /><br />
+                        Reason: <%= app.reason %>
+                        <br /><br />
+                        <% if (app.status === 'approved') { %>
+                        Approval Reason: <%= app.staff_reason %>
+                        <% } else if (app.status === 'denied') { %>
+                        Denial Reason: <%= app.staff_reason %>
+                        <% } %>
+              </p>
+            </div>
+            <div class="card-footer" style="background-color: #2C2F33;;">
+              <a href="/apps/partner/view/<%= app.appID%>" class="btn btn-secondary btn-bot">View Application</a>
+            </div>
+          </div>
+        </div>
+      </div>
+       <% }) %>
+    <% } %>
+  </div>
+</div>
+</div>    
+    </body>
+
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+
+    <%- include(footerPath) %>
+</html>

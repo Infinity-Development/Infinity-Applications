@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- INLUCDE THE HEADER IN THE PAGE.-->
+    <head>
+      <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+    <%- include(headerPath, {
+      bot, user, path,
+      description: `View a Staff Application | Login Required`,
+      description2: `View a Staff Application | Login Required`,
+      title: `Infinity Apps | View App`,
+      main_title: `Infinity Apps | View App`,
+      image: 'none',
+      }) 
+    %>
+
+    <% if(alert) { %>
+        <%- include(notifyPath, {alert}) %>
+      <% }else if(error){ %>
+          <%- include(notifyPath, {error}) %>
+      <% } %>
+
+    <body>
+    <%- include(navbarPath, { bot, user, path }) %>
+    <br><br><br><br><br><br><br><br><br><br>
+
+<div class="container">
+  <div class="container contact-form bg-ibl">
+    <form method="post">
+     <br />
+       <div class="contact-image">
+        <h3><i class="fas fa-eye"></i>Viewing a Staff Application:</h3>
+        <hr style="color: white; background-color: white;" />
+       </div>
+       <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label><i class="fa fa-fingerprint"></i> Application ID: <span style="color: green">*</span></label>
+                  <input type="text" name="appID" id="appID" class="form-control" placeholder="<%= apps.appID %>" value="<%= apps.appID %>" disabled>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-fingerprint"></i> Discord User ID: <span style="color: green">*</span></label>
+                    <input type="text" name="userID" id="userID" class="form-control" placeholder="<%= apps.userID %>" value="<%= apps.userID %>" disabled />
+                </div>
+                <div class="form-group">
+                    <label><i class="fa fa-user"></i> Discord Username: <span style="color: green">*</span></label>
+                    <input type="text" name="userName" id="userName" class="form-control" placeholder="<%= apps.userName %>" value="<%= apps.userName %>" disabled/>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-exclamation-circle"></i> Past Server Experience: <span style="color: rgb(175, 22, 22)">*</span></label>
+                    <textarea type="text" name="experience" id="experience" class="form-control" placeholder="<%= apps.experience %>" value="<%= apps.experience %>" disabled></textarea>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-user-cog"></i> List some of your Strengths: <span style="color: rgb(175, 22, 22)">*</span></label>
+                  <textarea class="form-control" name="strength" id="strength" placeholder="<%= apps.strength %>" value="<%= apps.strength %>" disabled></textarea>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa fa-gavel"></i> Situation Examples: <span style="color: rgb(175, 22, 22)">*</span></label>
+                  <textarea class="form-control" name="handle" id="handle" placeholder="<%= apps.handle %>" value="<%= apps.handle %>" disabled></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label><i class="fa fa-crown"></i> Position: <span style="color: green">*</span></label>
+                 <input type="text" name="position" id="position" class="form-control" placeholder="staff" value="staff" disabled />
+              </div>
+              <div class="form-group">
+                <label><i class="fa fa-comment-o"></i> Reason for applying!: <span style="color: rgb(175, 22, 22)">*</span></label>
+                <textarea class="form-control" name="reason" id="reason" placeholder="<%= apps.reason %>" value="<%= apps.reason %>" disabled></textarea>
+              </div>
+              <hr style="background-color: white;">
+              <h3><i class="fa fa-gavel"></i>Application Terms</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked disabled>
+                <label class="form-check-label" for="flexCheckDefault" name="rules" id="rules" checked disabled>
+                  I have read and agree to be bound to the Rules listed in the Infinity Bot List Discord Server.
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked disabled>
+                <label class="form-check-label" for="flexCheckDefault" name="terms" id="terms" checked disabled>
+                  I have read and agree to be bound to the <a href="https://infinitybotlist.com/terms">Terms of Service</a> and <a href="https://infinitybotlist.com/privacy">Privacy Policy</a>.
+                </label>
+              </div>
+              <hr style="background-color: white;">
+              <h3><i class="fa fa-gavel"></i> Staff Response</h3>
+              <div class="form-check">
+                <p><i class="fa fa-thumbs-up"></i> Total Likes: <%= apps.likes %></p>
+              </div>
+              <div class="form-check">
+                  <p><i class="fa fa-thumbs-down"></i> Total Dislikes: <%= apps.dislikes %></p>
+              </div>
+              <div class="form-check">
+                <p><i class="fa fa-file"></i> App Status: <%= apps.status %></p>
+            </div>
+          </div>
+        </div>
+    </form>
+    <br/>
+  </div>
+  </div>
+
+  <br><br><br><br><br><br>
+
+</body>
+
+<!-- INCLUDE THE WEBSITE FOOTER -->
+<%- include(footerPath) %>
+
+</html>

@@ -1,0 +1,110 @@
+<!-- START THE ACTUAL NAVIGATION BAR -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="webkit-user-select: none; -ms-user-select: none; user-select: none;">
+    <a class="navbar-brand" href="/"><img src="/static/images/Apps.png" height="50" /></a>
+    <a href="javascript:pageScroll()"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button></a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="https://infinitybotlist.com/discord">Support</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="https://infinitybotlist.com">Website</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="https://status.botlist.site/">Status</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="https://blog.botlist.site/">Blog</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <% if(user) { %>
+            <li class="nav-item dropdown" style="margin-left:10px;">
+                <a class="btn btn-transparent dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+            <img height="30"  style="border-radius:50%;" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>"/> <%= user.username %></a>
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: #23272a;" aria-labelledby="navbarDropdown" style="z-index: 100;">
+                    <h6 class="dropdown-header">
+                        <%= user.username %>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Profile Menu</h6>
+                    <a class="dropdown-item" href="/profile"><i class="fas fa-user"></i> View Profile</a>
+                    <% if(staff.mods.includes(user.id)) { %>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Admin Menu</h6>
+                        <a class="dropdown-item" href="/panel"><i class="fas fa-tasks"></i> Staff Panel</a>
+                        <% } %>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item logoutt" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <% } else { %>
+                <li class="nav-item" style="margin-left:10px;">
+                    <a class="btn btn-light loginn" href="/callback" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-sign-in-alt sii"></i><i class="fab fa-discord dii"></i> Login
+                    </a>
+                    <% } %>
+                </li>
+                </ul>
+</nav>
+<script>
+    /*  Make navbar dark on scroll  */
+    $(document).ready(function(){
+      $(window).scroll(function(){
+      	var scroll = $(window).scrollTop();
+    	  if (scroll > 1) {
+    	    $(".navbar").css("background" , "#202225");
+    	  }
+    	  else{
+    		  $(".navbar").css("background" , "transparent");
+    	  }
+      })
+    })
+      /*  Copyright (c) AshMW_SucksAtJS  */
+</script>
+<script>
+    /*  Anti-Transparent For Mobile navbar on dropdown  */
+      function pageScroll() {
+        	window.scrollBy(0,3);
+        	scrolldelay = setTimeout('pageScroll()',0.1);
+          clearTimeout(scrolldelay);
+    }
+      /*  Copyright (c) AshMW_SucksAtJS  */
+</script>
+<style>
+    .navbar {
+        transition:0.3s;
+      }
+      .loginn:hover .sii {
+        display:none;
+      }
+      .loginn:hover .dii {
+        display:inline-block;
+        padding-right:2px;
+      }
+      .loginn .dii {
+        display:none;
+      }
+      .loginn:hover {
+        background:#748AD7;
+        border-color:#748AD7;
+        color:#fff;
+        transition:0.1s;
+      }
+      .navbar .dropdown-item:hover {
+        background:#EFEFEF;
+      }
+      .logoutt {
+        color:#A4202B;
+      }
+      .logoutt:hover {
+        background:#A4202B !important;
+        color:#fff;
+      }
+</style>

@@ -1,0 +1,196 @@
+<!-- 
+    COPYRIGHT (c) 2021 Infinity Bot List (infinitybotlist.com)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <link rel="stylesheet" href="/static/styling/style.css">
+    </head>
+
+    <%- include(headerPath, {
+        bot, user, path,
+        description: 'View the Staff Panel | Login Required',
+        description2: 'View the Staff Panel | Login Required',
+        title: 'Infinity Apps | Staff Panel',
+        main_title: 'Infinity Apps | Staff Panel',
+        image: 'none',
+    }) %>
+
+    <body>
+        <%- include(navbarPath, { bot, user, path }) %>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+        <% if(alert) { %>
+          <%- include(notifyPath, {alert}) %>
+        <% }else if(error){ %>
+            <%- include(notifyPath, {error}) %>
+        <% } %>
+
+        <br />
+        <div class="container px-3 px-3 mt-5 pt-5">
+            <div class="columns container px-3 is-multiline">
+                <div class="column is-2">
+                    <img draggable="false" class="pulse-avatar"  onerror=" imgerror(this);"="" src="/static/images/Apps.png" style="border-radius: 50%; width: 150px; height: 150px;">
+                </div>
+                <div class="column is-6">
+                  <p translate="no" class="has-text-white is-size-3" style="margin-bottom: 10px;">Welcome, <%= user.username %> to the Panel</p>
+                  <p class="mt-1 has-text-white">Here you can Approve, Deny and Vote for a Application!</p>      
+                </div>
+              </div>
+            </div>
+              <br /><br />
+              <div class="container">
+                <br><br>
+              <div class="column">
+                <center>
+                  <p class="has-text-white title is-large"><i class="fa fa-gavel has-text-warning"></i>&nbsp;Pending Staff Applications</p>
+                </center>
+                  <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+                    <% if(pending_staff.length === 0) { %>
+                    <center>
+                      <p style="font-size: 20px; color: white; text-align:center">There are no Pending Staff Applications</p>
+                    </center>
+                      <% } else { %>
+                      <% pending_staff.filter(app => app.status === "pending").map(app => { %> 
+                    <div class="col-md-6 col-lg-4 pb-3">
+                      <div data-aos="fade-left">
+                      <div class="card tox-card-custom bg-tox border-white border-0">
+                        <div class="card-body">
+                          <div class="is-pulled-right mt-tox mt-1">
+                            <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Pending Review</span>
+                          </div>
+                          <p translate="no" class="card-text toxbotDesc" name="appID" id="appID" value="<%= app.appID %>">
+                            App ID: <a href="/apps/staff/view/<%= app.appID %>" name="appID" id="appID" value="<%= app.appID %>"><%= app.appID %></a>
+                          </p>
+                          <p translate="no" class="card-text toxbotDesc">
+                            App Type: <%= app.position %>
+                            <br /><br />
+                            User: <%= app.userName %>
+                            <br /><br />
+                            Likes: <%= app.likes %>
+                            <br /><br />
+                            Dislikes: <%= app.dislikes %>
+                            <hr />
+                          </p>
+                        </div>
+                        <div class="card-footer" style="background-color: #2C2F33;;">
+                              <a class="btn btn-primary" href="/apps/staff/view/<%= app.appID %>"><i class="fas fa-eye"></i> View</a>
+                              <% if (staff.managers.includes(user.id)) { %>
+                                <a class="btn btn-success" href="/apps/staff/approve/<%= app.appID %>"><i class="fas fa-plus"></i> Approve</a>
+                                <a class="btn btn-danger" href="/apps/staff/deny/<%= app.appID %>"><i class="fas fa-trash"></i> Deny</a>
+                              <% } %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   <% }) %>
+                <% } %>
+              </div>
+          </div>
+        </div> 
+        <div class="container">
+          <br><br>
+        <div class="column">
+          <center>
+            <p class="has-text-white title is-large"><i class="fa fa-gavel has-text-warning"></i>&nbsp;Pending Dev Applications</p>
+          </center>
+            <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+              <% if(pending_devs.length === 0) { %>
+              <center>
+                <p style="font-size: 20px; color: white; text-align:center">There are no Pending Developer Applications</p>
+              </center>
+                <% } else { %>
+                <% pending_devs.filter(app => app.status === "pending").map(app => { %> 
+              <div class="col-md-6 col-lg-4 pb-3">
+                <div data-aos="fade-left">
+                <div class="card tox-card-custom bg-tox border-white border-0">
+                  <div class="card-body">
+                    <div class="is-pulled-right mt-tox mt-1">
+                      <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Pending Review</span>
+                    </div>
+                    <p translate="no" class="card-text toxbotDesc" name="appID" id="appID" value="<%= app.appID %>">
+                      App ID: <a href="/apps/devs/view/<%= app.appID %>" name="appID" id="appID" value="<%= app.appID %>"><%= app.appID %></a>
+                    </p>
+                    <p translate="no" class="card-text toxbotDesc">
+                      App Type: <%= app.position %>
+                      <br /><br />
+                      User: <%= app.userName %>
+                      <br /><br />
+                      Likes: <%= app.likes %>
+                      <br /><br />
+                      Dislikes: <%= app.dislikes %>
+                      <hr />
+                    </p>
+                  </div>
+                  <div class="card-footer" style="background-color: #2C2F33;;">
+                        <a class="btn btn-primary" href="/apps/devs/view/<%= app.appID %>"><i class="fas fa-eye"></i> View</a>
+                        <% if (staff.heads.includes(user.id)) { %>
+                             <a class="btn btn-success" href="/apps/devs/approve/<%= app.appID %>"><i class="fas fa-plus"></i> Approve</a>
+                             <a class="btn btn-danger" href="/apps/devs/deny/<%= app.appID %>"><i class="fas fa-trash"></i> Deny</a>
+                        <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <% }) %>
+          <% } %>
+        </div>
+    </div>
+  </div> 
+  <div class="container">
+    <br><br>
+  <div class="column">
+    <center>
+      <p class="has-text-white title is-large"><i class="fa fa-gavel has-text-warning"></i>&nbsp;Pending Partner Applications</p>
+    </center>
+      <div class="columns is-multiline is-desktop is-variable is-7 pt-5">
+        <% if(pending_partner.length === 0) { %>
+        <center>
+          <p style="font-size: 20px; color: white; text-align:center">There are no Pending Partner Applications</p>
+        </center>
+          <% } else { %>
+          <% pending_partner.filter(app => app.status === "pending").map(app => { %> 
+        <div class="col-md-6 col-lg-4 pb-3">
+          <div data-aos="fade-left">
+          <div class="card tox-card-custom bg-tox border-white border-0">
+            <div class="card-body">
+              <div class="is-pulled-right mt-tox mt-1">
+                <span data-tooltip="Application Status" data-tooltip-location="left" class="badge badge-stats mb-tox mt-1 w-100"><i class="fa fa-exclamation-circle has-text-warning"></i>&nbsp; Pending Review</span>
+              </div>
+              <p translate="no" class="card-text toxbotDesc" name="appID" id="appID" value="<%= app.appID %>">
+                App ID: <a href="/apps/view/<%= app.appID %>" name="appID" id="appID" value="<%= app.appID %>"><%= app.appID %></a>
+              </p>
+              <p translate="no" class="card-text toxbotDesc">
+                App Type: <%= app.position %>
+                <br /><br />
+                User: <%= app.userName %>
+                <br /><br />
+                Likes: <%= app.likes %>
+                <br /><br />
+                Dislikes: <%= app.dislikes %>
+                <hr />
+              </p>
+            </div>
+            <div class="card-footer" style="background-color: #2C2F33;;">
+                  <a class="btn btn-primary" href="/apps/partner/view/<%= app.appID %>"><i class="fas fa-eye"></i> View</a>
+                  <a class="btn btn-success" href="/apps/partner/approve/<%= app.appID %>"><i class="fas fa-plus"></i> Approve</a>
+                  <a class="btn btn-danger" href="/apps/partner/deny/<%= app.appID %>"><i class="fas fa-trash"></i> Deny</a>
+            </div>
+          </div>
+        </div>
+      </div>
+       <% }) %>
+    <% } %>
+  </div>
+</div>
+</div> 
+    </body>
+
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+
+    <%- include(footerPath) %>
+</html>

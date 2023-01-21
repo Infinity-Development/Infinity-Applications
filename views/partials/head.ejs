@@ -1,0 +1,61 @@
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- META TAGS-->
+    <meta name="og:description" content="<%= description && description !== 'none' ? description : 'Interested in joining the Infinity Bot List team, Feel free to fill out an application here!' %>" />
+    <meta property="og:description" content="<%= description2 && description2 !== 'none' ? description2 : 'Interested in joining the Infinity Bot List team, Feel free to fill out an application here!' %>" />
+    <meta name="og:title" content="<%= title && title !== 'none' ? title : 'Infinity Applications' %>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:url" content="https://apps.infinitybotlist.com" />
+    <meta name="theme-color" content="#7289DA">
+    <meta name="og:image" content="<%= image && image !== 'none' ? image : 'https://cdn.infinitybots.xyz/images/png/Infinity5.png' %>" />
+
+    <!-- PAGE TITLES-->
+    <title><%= main_title && main_title !== 'none' ? main_title : 'Infinity Applications' %></title>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js" integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/22859885a2.js" crossorigin="anonymous"></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js'></script>
+    <script src='/static/scripts/style.js'></script>
+
+    <!-- IMPORT LINKS -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <link rel="shortcut icon" href="<%= image && image !== 'none' ? image : 'https://cdn.infinitybots.xyz/images/png/Infinity5.png' %>" />
+    <link rel="stylesheet" href="/static/styling/header.css">
+    <link rel="stylesheet" href="/static/styling/main.css">
+</head> 
+
+<body>
+  <div id="loader-wrapper">
+    <center>
+    <div class="preloader">
+    <div id="loader" class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+    </div>
+    </center>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    $("footer").append('<br /> Copyright (c) 2021 Infinity Development</a>')
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('#nobr a').attr('target', '_blank');
+    $('#nobr a').attr('data-toggle', 'tooltip');
+    $('#nobr a').attr('data-html', 'true');
+    $('#nobr a').attr('class', 'outlink');
+    $('#nobr a').attr('title', '<span class="text-danger"><b>Warning:</b></span><br />This links to a Third-Party Website!');
+  });
+  </script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- INLUCDE THE HEADER IN THE PAGE.-->
+    <head>
+      <link rel="stylesheet" href="/styling/main/custom-style.css">
+    </head>
+    <%- include(headerPath, {
+      bot, user, path,
+      description: 'Check out our Policy Privacy page.',
+      description2: 'Maybe you wanna check our Policy Privacy page.',
+      title: 'Infinity Apps | Privacy',
+      main_title: 'Infinity Apps | Privacy',
+      image: 'none',
+      }) 
+    %>
+    <!-- START THE ACTUAL PAGE BODY.. YEET. -->
+    <body>
+
+      <%- include(navbarPath, { bot, user, config, staff, path }) %>
+
+      <br><br><br><br><br><br><br><br><br><br>
+
+
+
+    </body>
+
+ <br><br><br><br><br><br>
+
+    <!-- INCLUDE THE WEBSITE FOOTER -->
+    <%- include(footerPath) %>
+</html>

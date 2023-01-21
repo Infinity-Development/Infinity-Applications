@@ -1,0 +1,22 @@
+exports.token = '';
+exports.ClientID = '868984038151569438';
+exports.ClientSecret = '';
+exports.RedirectURI = 'https://botlist.app/callback';
+exports.mongodb_url =
+  '';
+exports.port = 8420;
+
+exports.guildID = '870950609291972618'; // Staff Server ID
+exports.staffRole = '907729844605968454'; // Application Pings Role
+exports.devRole = '870950609317150732'; // Head Developer Role
+exports.devID = '915000865537007686'; // Dev Server ID
+
+exports.staffApps = '870950610692878338';
+exports.appLogs = '904858832843440139';
+exports.devLogs = '870950610692878339';
+exports.partLogs = '905272483958095943';
+exports.secret = '' // The session secret
+
+exports.staffAppsStatus = 'enabled'; // Change to Disabled when Staff Apps are closed
+exports.devAppsStatus = 'enabled'; // Change to Disabled when Dev Apps are closed
+exports.partAppsStatus = 'disabled'; // Change to Disabled when Partner Apps are closed
